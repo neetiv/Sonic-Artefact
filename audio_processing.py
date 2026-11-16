@@ -30,9 +30,55 @@ def norm(w):
         return "not"
     return re.sub(r"('s|'re|'ve|'ll|'d|'m)$", "", w)
 
+# DESIGN CHOICE: adding functions for main functionalities for individualized testing & code readability
+
+# Loads data at path
 def load_filtered_data(path):
     with open(path, encoding="utf-8") as f:
         data = json.load(f)
     words = {entry["text"] for entry in data["words"]}
     phrases = [tuple(entry["text"].split()) for entry in data["phrases"]]
     return words, phrases
+
+# Loads the clip from start to end endpoints (mostly for testing)
+def load_clip(path, start, end):
+    audio = decode_audio(path, sampling_rate=SAMPLE_RATE)
+    duration = len(audio) / SAMPLE_RATE
+    end = duration if end is None else min(end, duration)
+    clip = audio[int(start * SAMPLE_RATE):int(end * SAMPLE_RATE)]
+    return clip, end
+
+def transcribe_clip(clip, offset):
+    # Calling whisper model!
+    model = WhisperModel(MODEL_SIZE, device="cpu", compute_type="int8")
+    segments, _ = model.transcribe(clip, word_timestamps=True, language="en")
+
+    # Returns tokens, an array storing timestamp of each word or phrase as it is heard
+    tokens = []
+    for segment in segments:
+        for w in segment.words:
+            # Clean the words so they are processed correctly
+            for t in clean(w.word):
+                tokens.append((norm(t), w.start + offset, w.end + offset))
+    return tokens
+
+# Find matches between filtered list and what was heard by whisper model
+# returns list of dictionaries
+def find_matches(tokens, words, phrases):
+    texts = [t[0] for t in tokens]
+    matches = []
+
+    for phrase in phrases:
+        n = len(phrase)
+        for i in range(len(texts) - n + 1):
+            if tuple(texts[i:i + n]) == phrase:
+                matches.append({"start": tokens[i][1],
+                                "end": tokens[i + n - 1][2],
+                                "text": " ".join(phrase),
+                                "kind": "phrase"})
+
+    for word, start, end in tokens:
+        if word in words:
+            matches.append({"start": start, "end": end, "text": word, "kind": "word"})
+
+    return matches
