@@ -82,3 +82,32 @@ def find_matches(tokens, words, phrases):
             matches.append({"start": start, "end": end, "text": word, "kind": "word"})
 
     return matches
+
+# Merge heard intervals (literally leetcode Merge Intervals lmao)
+def merge_intervals(matches, padding = PADDING):
+    intervals = [[m["start"] - padding, m["end"] + padding] for m in matches]
+    # Sort by first value in interval!
+    intervals.sort(key=lambda x: x[0])
+
+    merged = []
+    for start, end in intervals:
+        if merged and start <= merged[-1][1]:
+            merged[-1][1] = max(merged[-1][1], end)
+        else:
+            merged.append([max(start, 0.0), end])
+    return merged
+
+
+# Main function calling all helpers!
+def main():
+    w, p = load_filtered_data(FILTERED_DATA_PATH)
+    clip, clip_e = load_clip(AUDIO_PATH, CLIP_START, CLIP_END)  # later will use clip_e to set clip end
+
+    t0 = time.time()  # current time is intial time
+    tokens = transcribe_clip(clip, CLIP_START)
+    print(f"transcribed {len(tokens)} words in {time.time() - t0:.1f}s")
+
+    matches = find_matches(tokens, w, p)
+    windows = merge_intervals(matches)
+
+    
