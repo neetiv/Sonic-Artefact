@@ -1,0 +1,283 @@
+{
+  "source": "us_election_2020_2nd_presidential_debate.csv",
+  "settings": {
+    "top_words": 30,
+    "top_phrases": 30,
+    "min_phrase": 3,
+    "collapse_ratio": 1.25
+  },
+  "words": [
+    {
+      "text": "people",
+      "count": 103
+    },
+    {
+      "text": "let",
+      "count": 72
+    },
+    {
+      "text": "get",
+      "count": 69
+    },
+    {
+      "text": "say",
+      "count": 57
+    },
+    {
+      "text": "would",
+      "count": 56
+    },
+    {
+      "text": "china",
+      "count": 54
+    },
+    {
+      "text": "want",
+      "count": 53
+    },
+    {
+      "text": "one",
+      "count": 52
+    },
+    {
+      "text": "make",
+      "count": 45
+    },
+    {
+      "text": "look",
+      "count": 45
+    },
+    {
+      "text": "right",
+      "count": 44
+    },
+    {
+      "text": "money",
+      "count": 43
+    },
+    {
+      "text": "question",
+      "count": 42
+    },
+    {
+      "text": "done",
+      "count": 42
+    },
+    {
+      "text": "come",
+      "count": 41
+    },
+    {
+      "text": "talk",
+      "count": 39
+    },
+    {
+      "text": "years",
+      "count": 39
+    },
+    {
+      "text": "move",
+      "count": 37
+    },
+    {
+      "text": "country",
+      "count": 36
+    },
+    {
+      "text": "fact",
+      "count": 36
+    },
+    {
+      "text": "got",
+      "count": 35
+    },
+    {
+      "text": "time",
+      "count": 34
+    },
+    {
+      "text": "go",
+      "count": 34
+    },
+    {
+      "text": "well",
+      "count": 33
+    },
+    {
+      "text": "okay",
+      "count": 31
+    },
+    {
+      "text": "way",
+      "count": 30
+    },
+    {
+      "text": "million",
+      "count": 29
+    },
+    {
+      "text": "like",
+      "count": 29
+    },
+    {
+      "text": "us",
+      "count": 29
+    },
+    {
+      "text": "thing",
+      "count": 28
+    }
+  ],
+  "phrases": [
+    {
+      "text": "north korea",
+      "n": 2,
+      "count": 15
+    },
+    {
+      "text": "united states",
+      "n": 2,
+      "count": 14
+    },
+    {
+      "text": "two minutes",
+      "n": 2,
+      "count": 13
+    },
+    {
+      "text": "we going to move",
+      "n": 4,
+      "count": 12
+    },
+    {
+      "text": "let me ask",
+      "n": 3,
+      "count": 11
+    },
+    {
+      "text": "let talk",
+      "n": 2,
+      "count": 11
+    },
+    {
+      "text": "come back",
+      "n": 2,
+      "count": 10
+    },
+    {
+      "text": "wall street",
+      "n": 2,
+      "count": 10
+    },
+    {
+      "text": "american people",
+      "n": 2,
+      "count": 9
+    },
+    {
+      "text": "new york",
+      "n": 2,
+      "count": 9
+    },
+    {
+      "text": "next section",
+      "n": 2,
+      "count": 9
+    },
+    {
+      "text": "two minutes uninterrupted",
+      "n": 3,
+      "count": 9
+    },
+    {
+      "text": "abraham lincoln",
+      "n": 2,
+      "count": 8
+    },
+    {
+      "text": "eight years",
+      "n": 2,
+      "count": 8
+    },
+    {
+      "text": "let move",
+      "n": 2,
+      "count": 8
+    },
+    {
+      "text": "lot of money",
+      "n": 3,
+      "count": 8
+    },
+    {
+      "text": "minimum wage",
+      "n": 2,
+      "count": 8
+    },
+    {
+      "text": "number one",
+      "n": 2,
+      "count": 8
+    },
+    {
+      "text": "oil industry",
+      "n": 2,
+      "count": 8
+    },
+    {
+      "text": "pre existing",
+      "n": 2,
+      "count": 8
+    },
+    {
+      "text": "right let",
+      "n": 2,
+      "count": 8
+    },
+    {
+      "text": "we got",
+      "n": 2,
+      "count": 8
+    },
+    {
+      "text": "climate change",
+      "n": 2,
+      "count": 7
+    },
+    {
+      "text": "final question",
+      "n": 2,
+      "count": 7
+    },
+    {
+      "text": "four years",
+      "n": 2,
+      "count": 7
+    },
+    {
+      "text": "million people",
+      "n": 2,
+      "count": 7
+    },
+    {
+      "text": "social security",
+      "n": 2,
+      "count": 7
+    },
+    {
+      "text": "take a look",
+      "n": 3,
+      "count": 7
+    },
+    {
+      "text": "want to talk",
+      "n": 3,
+      "count": 7
+    },
+    {
+      "text": "we talking",
+      "n": 2,
+      "count": 7
+    }
+  ]
+}

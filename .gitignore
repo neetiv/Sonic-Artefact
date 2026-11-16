@@ -1,1 +1,16 @@
+# data (re-download from Kaggle)
+data/
 *.zip
+*.mp3
+
+# credentials, never commit
+kaggle.json
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+.ipynb_checkpoints/
+
+# macOS
+.DS_Store

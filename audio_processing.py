@@ -8,6 +8,7 @@ from nltk.tokenize import word_tokenize
 from collections import Counter # special map built for counting
 import csv # to read dataset
 
+# Opening & reading csv file
 with open("data/us_election_2020_2nd_presidential_debate.csv", newline="", encoding="utf-8") as f:
     for row in csv.DictReader(f):
         speaker = row["speaker"]
