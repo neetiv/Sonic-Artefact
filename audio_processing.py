@@ -12,8 +12,8 @@ FILTERED_DATA_PATH = "filtered_data.json"
 OUTPUT_PATH = "time_windows.json"  # populate time windows where audio must be louder
 MODEL_SIZE = "base.en"  # loading base model of whisper
 # Start and end times
-CLIP_START = 0
-CLIP_END = 60  # will eventually replace with audio's real length, set for test runs rn
+CLIP_START = 540
+CLIP_END = 660  # will eventually replace with audio's real length, set for test runs rn
 SAMPLE_RATE = 16000  # whisper model expects 16k Hz, speech
 PADDING = 0.05  # padding to boosted windows for smoothness of volume transition
 

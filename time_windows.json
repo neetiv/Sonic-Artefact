@@ -1,0 +1,222 @@
+{
+  "clip": [
+    540,
+    660
+  ],
+  "windows": [
+    {
+      "start": 547.23,
+      "end": 547.6099999999999
+    },
+    {
+      "start": 553.95,
+      "end": 554.25
+    },
+    {
+      "start": 554.5500000000001,
+      "end": 554.79
+    },
+    {
+      "start": 556.5300000000001,
+      "end": 556.91
+    },
+    {
+      "start": 558.1500000000001,
+      "end": 558.49
+    },
+    {
+      "start": 558.97,
+      "end": 559.31
+    },
+    {
+      "start": 563.13,
+      "end": 563.4699999999999
+    },
+    {
+      "start": 565.59,
+      "end": 565.9699999999999
+    },
+    {
+      "start": 568.0500000000001,
+      "end": 568.43
+    },
+    {
+      "start": 568.9300000000001,
+      "end": 569.63
+    },
+    {
+      "start": 570.87,
+      "end": 571.29
+    },
+    {
+      "start": 581.13,
+      "end": 581.63
+    },
+    {
+      "start": 587.5300000000001,
+      "end": 588.03
+    },
+    {
+      "start": 589.99,
+      "end": 590.3499999999999
+    },
+    {
+      "start": 593.49,
+      "end": 593.8499999999999
+    },
+    {
+      "start": 623.3100000000001,
+      "end": 623.8299999999999
+    },
+    {
+      "start": 627.33,
+      "end": 627.77
+    },
+    {
+      "start": 642.5500000000001,
+      "end": 642.8299999999999
+    },
+    {
+      "start": 657.3100000000001,
+      "end": 657.6099999999999
+    },
+    {
+      "start": 658.51,
+      "end": 658.8299999999999
+    }
+  ],
+  "matches": [
+    {
+      "start": 623.36,
+      "end": 623.78,
+      "text": "lot of money",
+      "kind": "phrase"
+    },
+    {
+      "start": 547.28,
+      "end": 547.56,
+      "text": "us",
+      "kind": "word"
+    },
+    {
+      "start": 554.0,
+      "end": 554.2,
+      "text": "done",
+      "kind": "word"
+    },
+    {
+      "start": 554.6,
+      "end": 554.74,
+      "text": "done",
+      "kind": "word"
+    },
+    {
+      "start": 556.58,
+      "end": 556.86,
+      "text": "us",
+      "kind": "word"
+    },
+    {
+      "start": 558.2,
+      "end": 558.44,
+      "text": "response",
+      "kind": "word"
+    },
+    {
+      "start": 559.02,
+      "end": 559.26,
+      "text": "response",
+      "kind": "word"
+    },
+    {
+      "start": 563.18,
+      "end": 563.42,
+      "text": "china",
+      "kind": "word"
+    },
+    {
+      "start": 565.64,
+      "end": 565.92,
+      "text": "done",
+      "kind": "word"
+    },
+    {
+      "start": 568.1,
+      "end": 568.38,
+      "text": "sure",
+      "kind": "word"
+    },
+    {
+      "start": 568.98,
+      "end": 569.58,
+      "text": "people",
+      "kind": "word"
+    },
+    {
+      "start": 570.92,
+      "end": 571.24,
+      "text": "china",
+      "kind": "word"
+    },
+    {
+      "start": 581.18,
+      "end": 581.58,
+      "text": "china",
+      "kind": "word"
+    },
+    {
+      "start": 587.58,
+      "end": 587.98,
+      "text": "talking",
+      "kind": "word"
+    },
+    {
+      "start": 590.04,
+      "end": 590.3,
+      "text": "sure",
+      "kind": "word"
+    },
+    {
+      "start": 593.54,
+      "end": 593.8,
+      "text": "people",
+      "kind": "word"
+    },
+    {
+      "start": 623.36,
+      "end": 623.48,
+      "text": "lot",
+      "kind": "word"
+    },
+    {
+      "start": 623.58,
+      "end": 623.78,
+      "text": "money",
+      "kind": "word"
+    },
+    {
+      "start": 627.38,
+      "end": 627.72,
+      "text": "people",
+      "kind": "word"
+    },
+    {
+      "start": 642.6,
+      "end": 642.78,
+      "text": "lot",
+      "kind": "word"
+    },
+    {
+      "start": 657.36,
+      "end": 657.56,
+      "text": "lot",
+      "kind": "word"
+    },
+    {
+      "start": 658.56,
+      "end": 658.78,
+      "text": "lot",
+      "kind": "word"
+    }
+  ]
+}
