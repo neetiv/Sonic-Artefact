@@ -110,4 +110,21 @@ def main():
     matches = find_matches(tokens, w, p)
     windows = merge_intervals(matches)
 
-    
+    length = max(clip_e - CLIP_START, 1e-9)  # Used 1e-9 as tolerance to prevent any issues with dividing by 0 later
+    louder_times = sum(end - start for start, end in windows)
+
+    # Print first 15 matches (for testing)
+    for m in matches[:15]:
+        print(f"  {m['start']:7.2f}s  [{m['kind']}]  {m['text']}")
+
+    print(f"{len(matches)} matches -> {len(windows)} windows")
+    print(f"~{louder_times / length:.1%} of the clip's time is louder")
+
+    with open(OUTPUT_PATH, "w", encoding="utf-8") as f:
+        json.dump({"clip": [CLIP_START, clip_e],
+                   "windows": [{"start": s, "end": e} for s, e in windows],
+                   "matches": matches}, f, indent=2)
+    print("saved", OUTPUT_PATH)
+
+if __name__ == "__main__":
+    main()
