@@ -8,6 +8,9 @@ WAV_FILE = "data/us_election_2020_2nd_presidential_debate_demo.wav" # .wav file 
 JSON_DATA = "time_windows.json" # JSON file with time windows where audio must be louder
 BASE_VOLUME = 0.4 # Base volume for the audio clip
 
+gain = BASE_VOLUME
+pos = 0 # Position in the audio clip
+
 with open(JSON_DATA, "r") as f:
     val = json.load(f) # Load the JSON data into a Python dictionary
 
@@ -15,7 +18,28 @@ start_offset = val["clip"][0] # Start time of the clip
 windows = [(w["start"] - start_offset, w["end"] - start_offset) for w in val["windows"]]
 
 data, samplerate = sf.read(WAV_FILE) # Read the audio file into a numpy array
-# print(len(data) / samplerate) # Should be 120 seconds if works as desired
 
-sd.play(data*BASE_VOLUME, samplerate) # Play the audio clip through the computer's speakers
-sd.wait()
+#sd.play(data*BASE_VOLUME, samplerate) # Play the audio clip through the computer's speakers
+#sd.wait()
+
+# Whether curr is in any of the time windows
+def in_window(curr):
+    for s, e in windows:
+        if s <= curr <= e:
+            return True
+    return False
+
+def determine_gain(output, frames, time_info, status):
+    global gain, pos # makes sure gain and pos from earlier are used
+    if status:
+        print(status)
+    curr = pos / samplerate # Current time in seconds
+    if in_window(curr):
+        gain = 1.0 # Increase volume to 100% if in a time window
+    else:
+        gain = BASE_VOLUME # Otherwise, keep it at base volume
+    output[:] = data[pos:pos+frames] * gain # Apply the gain to the audio data
+    pos += frames # Move the position forward by the number of frames processed
+
+    with sd.OutputStream(samplerate=samplerate, channels=data.shape[1], callback=determine_gain):
+        time.sleep(len(data) / samplerate + 1)
