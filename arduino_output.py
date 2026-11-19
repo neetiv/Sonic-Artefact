@@ -38,7 +38,16 @@ def determine_gain(output, frames, time_info, status):
         gain = 1.0 # Increase volume to 100% if in a time window
     else:
         gain = BASE_VOLUME # Otherwise, keep it at base volume
-    output[:] = data[pos:pos+frames] * gain # Apply the gain to the audio data
+
+    curr_slice = data[pos:pos+frames] * gain
+
+    # Handling case where we are at the end of the audio clip
+    if len(curr_slice) < frames:
+        output[:len(curr_slice)] = curr_slice
+        output[len(curr_slice):] = 0 # Fill the rest with silence
+        raise sd.CallbackStop()
+
+    output[:] = curr_slice # Apply the gain to the audio data
     pos += frames # Move the position forward by the number of frames processed
 
     with sd.OutputStream(samplerate=samplerate, channels=data.shape[1], callback=determine_gain):
