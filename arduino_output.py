@@ -6,8 +6,8 @@ import soundfile as sf # Reads audio files into numpy arrays
 
 WAV_FILE = "data/us_election_2020_2nd_presidential_debate_demo.wav" # .wav file with clip we will use for midterm demo
 JSON_DATA = "time_windows.json" # JSON file with time windows where audio must be louder
-BASE_VOLUME = 0.2 # Base volume for the audio clip
-PAD = 0
+BASE_VOLUME = 0.5 # Base volume for the audio clip
+PAD = -0.05
 
 gain = BASE_VOLUME
 pos = 0 # Position in the audio clip
@@ -24,6 +24,7 @@ start_offset = val["clip"][0] # Start time of the clip
 windows = [(w["start"] + PAD - start_offset, w["end"] - PAD - start_offset) for w in val["windows"]]
 
 data, samplerate = sf.read(WAV_FILE) # Read the audio file into a numpy array
+data = data / np.max(np.abs(data))
 
 #sd.play(data*BASE_VOLUME, samplerate) # Play the audio clip through the computer's speakers
 #sd.wait()
@@ -43,7 +44,7 @@ def determine_gain(output, frames, time_info, status):
     if in_window(curr):
         gain = BASE_VOLUME + (1.0 - BASE_VOLUME) * volume / 100
     else:
-        gain = BASE_VOLUME # Otherwise, keep it at base volume
+        gain = 0.05 # Otherwise, keep it at base volume
 
     curr_slice = data[pos:pos+frames] * gain
 
