@@ -12,6 +12,11 @@ PAD = 0
 gain = BASE_VOLUME
 pos = 0 # Position in the audio clip
 
+# Arduino constants
+PORT = "/dev/cu.usbserial-10"
+SERIAL_SPEED = 9600
+volume = 0
+
 with open(JSON_DATA, "r") as f:
     val = json.load(f) # Load the JSON data into a Python dictionary
 
@@ -36,7 +41,7 @@ def determine_gain(output, frames, time_info, status):
         print(status)
     curr = pos / samplerate # Current time in seconds
     if in_window(curr):
-        gain = 1.0 # Increase volume to 100% if in a time window
+        gain = BASE_VOLUME + (1.0 - BASE_VOLUME) * volume / 100
     else:
         gain = BASE_VOLUME # Otherwise, keep it at base volume
 
@@ -50,6 +55,20 @@ def determine_gain(output, frames, time_info, status):
 
     output[:] = curr_slice # Apply the gain to the audio data
     pos += frames # Move the position forward by the number of frames processed
+
+def read_arduino():
+    global volume
+    ser = serial.Serial(PORT, SERIAL_SPEED) # Connect to the Arduino
+    time.sleep(2) # Wait for the connection to establish
+    while True:
+        line = ser.readline().decode("utf-8").rstrip()
+        if line:
+            try:
+                volume = int(line) # Read the volume level from the Arduino
+                print(f"Volume from Arduino: {volume}")
+            except ValueError:
+                pass
+threading.Thread(target=read_arduino, daemon=True).start() # Start the Arduino reading in a separate thread
 
 with sd.OutputStream(samplerate=samplerate, channels=data.shape[1], callback=determine_gain):
     time.sleep(len(data) / samplerate + 1)
